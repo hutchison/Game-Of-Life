@@ -1,0 +1,17 @@
+# Game Of Life in C
+
+Just Conway's Game Of Life to mark it off my lifetime todo-list. And to have something to show my
+students in the future.
+
+## Implementation details
+
+The size of the field is hardcoded with `#define`. Cells are activated manually in `main()`. The
+field is limited, so no "torus"-bogus or something. Cells outside the field are marked "dead".
+Standard rules (23/3).
+
+The field is a global integer array. Since there are no threads it's ok this way. Iterations are
+continously written to `stdout` with a 100ms delay.
+
+## TODO for future generations
+
+* pass the fieldsize via `argv` and allocate the memory using `malloc()`
