@@ -63,19 +63,24 @@ void randomize_field(int ncells)
 		activate_field(random() % SIZE, random() % SIZE);
 	}
 }
+
 void print_field()
 {
+	print_dashline();
 	for (int i = 0; i < SIZE; i++) {
+		putchar('|');
 		for (int j = 0; j < SIZE; j++) {
 			print_cell(field[i][j]);
 		}
+		putchar('|');
 		printf("\n");
 	}
+	print_dashline();
 }
 
 void print_cell(int c)
 {
-	if (c) printf("o");
+	if (c) printf("*");
 	else printf(" ");
 }
 
@@ -195,9 +200,11 @@ void step()
 
 void print_dashline()
 {
+	putchar('+');
 	for (int i = 0; i < SIZE; i++) {
 		printf("-");
 	}
+	putchar('+');
 	printf("\n");
 }
 
