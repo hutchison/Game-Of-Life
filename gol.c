@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#define SIZE 49
+#define SIZE 42
 
 int field[SIZE][SIZE];
 int new_field[SIZE][SIZE];
