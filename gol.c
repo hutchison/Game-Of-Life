@@ -15,6 +15,7 @@ int det_cell_status(int x, int y);
 int living_neighbors(int x, int y);
 void step();
 void print_dashline();
+void clear();
 
 int main(int argc, const char *argv[])
 {
@@ -221,4 +222,9 @@ void print_dashline()
         printf("-");
     }
     printf("\n");
+}
+
+void clear()
+{
+	printf("\e[1;1H\e[2J");
 }
