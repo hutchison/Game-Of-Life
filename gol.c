@@ -2,7 +2,6 @@
 #include <unistd.h>
 
 #define SIZE 49
-#define ever ;;
 
 int field[SIZE][SIZE];
 int new_field[SIZE][SIZE];
@@ -67,9 +66,10 @@ int main(int argc, const char *argv[])
 
     int it = 0;
 
-    for (ever) {
-        printf("%d\n", ++it);
+    while (1) {
+	clear();
         print_field();
+        printf("Iteration: %d\n", ++it);
         step();
         usleep(100*1000);
     }
