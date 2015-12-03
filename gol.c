@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
 
 #define SIZE 42
 
@@ -7,6 +9,8 @@ int field[SIZE][SIZE];
 int new_field[SIZE][SIZE];
 
 void initialize_field();
+void activate_field(int x, int y);
+void randomize_field(int ncells);
 void print_field();
 void print_cell(int c);
 void overwrite_field(int **f);
@@ -21,48 +25,7 @@ int main(int argc, const char *argv[])
 	initialize_field(field);
 	initialize_field(new_field);
 
-	/* Pentadecathlon */
-	field[11][7] = 1;
-	field[11][8] = 1;
-	field[11][10] = 1;
-	field[11][11] = 1;
-	field[11][12] = 1;
-	field[11][13] = 1;
-	field[11][15] = 1;
-	field[11][16] = 1;
-	field[10][9] = 1;
-	field[10][14] = 1;
-	field[12][9] = 1;
-	field[12][14] = 1;
-
-	/* glider */
-	field[0][1] = 1;
-	field[1][2] = 1;
-	field[2][0] = 1;
-	field[2][1] = 1;
-	field[2][2] = 1;
-
-	field[20][20] = 1;
-	field[19][20] = 1;
-	field[18][20] = 1;
-	field[18][21] = 1;
-	field[18][22] = 1;
-	field[19][22] = 1;
-	field[20][22] = 1;
-
-	field[22][20] = 1;
-	field[23][20] = 1;
-	field[24][20] = 1;
-	field[24][21] = 1;
-	field[24][22] = 1;
-	field[23][22] = 1;
-	field[22][22] = 1;
-
-	field[24][24] = 1;
-	field[24][23] = 1;
-	field[25][24] = 1;
-	field[23][24] = 1;
-	field[23][25] = 1;
+	randomize_field(200);
 
 	int it = 0;
 
@@ -86,6 +49,20 @@ void initialize_field(int f[SIZE][SIZE])
 	}
 }
 
+void activate_field(int x, int y)
+{
+	field[x][y] = 1;
+}
+
+void randomize_field(int ncells)
+{
+	srandom(time(NULL));
+	int i = 0;
+
+	for (i = 0; i < ncells; i++) {
+		activate_field(random() % SIZE, random() % SIZE);
+	}
+}
 void print_field()
 {
 	for (int i = 0; i < SIZE; i++) {
